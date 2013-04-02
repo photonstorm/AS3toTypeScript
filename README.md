@@ -1,7 +1,7 @@
 AS3 To TypeScript Convertor
 ===========================
 
-Version 1.0
+Version 1.1
 
 April 2nd 2013
 
@@ -53,6 +53,10 @@ Currently the following tasks are performed by the script:
 * constructor swap
 * remove :Array
 * remove :Function
+* String to string
+* new Array() to []
+* public static function to public
+* remove :Class
 
 It will also generate a list of class level consts and properties.
 

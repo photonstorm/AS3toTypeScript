@@ -53,7 +53,7 @@
 
 <div id="header">
     <h1>AS3 to TypeScript Convertor</h1>
-    <h3>v1.0 - Richard Davey<br /><a href="http://www.photonstorm.com">Photon Storm</a></h3>
+    <h3>v1.1 - Richard Davey<br /><a href="http://www.photonstorm.com">Photon Storm</a></h3>
 </div>
 
 <?php
@@ -170,7 +170,7 @@
 
         global $filelist;
 
-        $ignore = array('.', '..', 'index.php');
+        $ignore = array('.', '..', '.svn', '.git', 'index.php');
         $root = scandir($dir); 
         $files = array_diff($root, $ignore);
 
@@ -306,6 +306,18 @@
 
         //  #20 - remove :Function
         $output = str_replace(':Function', '', $output);
+
+        //  #21 - String to string
+        $output = str_replace(':String', 'string', $output);
+
+        //  #22 - new Array() to []
+        $output = str_replace('new Array()', '[]', $output);
+
+        //  #23 - public static function
+        $output = str_replace('public static function', 'public static', $output);
+
+        //  #24 - remove :Class
+        $output = str_replace(':Class', '', $output);
 
         //  TODO - Append 'this.' before all class level vars.
         //  It needs a way of alsl picking up vars defined from an extended class
