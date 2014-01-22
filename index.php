@@ -239,7 +239,7 @@
         }
 
         //  #1 - Boolean to bool
-        $output = str_replace(':Boolean', ':bool', $output);
+        $output = str_replace(':Boolean', ':boolean', $output);
 
         //  #2 - uint to number
         $output = str_replace(':uint', ':number', $output);
@@ -283,6 +283,9 @@
         //  #13 - 'public var' to 'public'
         $output = str_replace('public var ', 'public ', $output);
 
+       //  #13.1 - 'private var' to 'private'
+        $output = str_replace('private var ', 'private ', $output);
+
         //  #14 - public function
         $output = str_replace('public function ', 'public ', $output);
 
@@ -308,7 +311,7 @@
         $output = str_replace(':Function', '', $output);
 
         //  #21 - String to string
-        $output = str_replace(':String', 'string', $output);
+        $output = str_replace(':String', ':string', $output);
 
         //  #22 - new Array() to []
         $output = str_replace('new Array()', '[]', $output);
@@ -318,9 +321,12 @@
 
         //  #24 - remove :Class
         $output = str_replace(':Class', '', $output);
+		
+		//  replace trace
+		$output = str_replace('trace(', 'console.log', $output);
 
         //  TODO - Append 'this.' before all class level vars.
-        //  It needs a way of alsl picking up vars defined from an extended class
+        //  It needs a way of also picking up vars defined from an extended class
         //  It also needs a way of matching
         // foreach ($vars as $key => $value) {
         //     $output = str_replace($value, "this.$value", $output);
